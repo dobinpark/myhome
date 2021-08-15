@@ -7,6 +7,7 @@ import webservice.myhome.model.User;
 import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Long>  {
+
     @EntityGraph(attributePaths = { "boards" })
     List<User> findAll();
 
