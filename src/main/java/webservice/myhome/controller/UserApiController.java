@@ -3,7 +3,6 @@ package webservice.myhome.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.thymeleaf.util.StringUtils;
 import webservice.myhome.model.Board;
 import webservice.myhome.model.User;
 import webservice.myhome.repository.UserRepository;
