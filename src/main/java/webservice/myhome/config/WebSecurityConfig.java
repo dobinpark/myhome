@@ -7,12 +7,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 import javax.sql.DataSource;
 
@@ -28,14 +24,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
+                //페이지 권한 설정
                     .antMatchers("/", "/account/register", "/css/**", "/api/**").permitAll()
-                    .anyRequest().authenticated()
-                    .and()
-                .formLogin()
+                    .anyRequest()
+                    .authenticated()
+                .and()
+                //로그인 설정
+                    .formLogin()
                     .loginPage("/account/login")
                     .permitAll()
-                    .and()
-                .logout()
+                .and()
+                //로그아웃 설정
+                    .logout()
                     .permitAll();
     }
 
